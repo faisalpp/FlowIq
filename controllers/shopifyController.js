@@ -121,7 +121,7 @@ async function HandleCallback(req,res){
         const apiSecret = SHOPIFY.API_SECRET;
 
         if(!shop || !code){
-            return res.status(400).send('Missing required parameters1');
+            return res.redirect('/dashboard/unauthorized');
         }
 
         // Exchange code for access token

@@ -12,13 +12,6 @@ const PORT = 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// app.use(cors({
-//   origin: [
-//     'https://oreemapp.myshopify.com',
-//     'https://www.dtf-world.de'
-//   ],
-//   credentials: true
-// }));
 
 /* -------------------- Static Files -------------------- */
 app.use(
@@ -35,7 +28,7 @@ app.get('/config.js', (req, res) => {
   res.type('application/javascript');
   res.send(`
     window.APP_CONFIG = {
-      SHOPIFY_API_KEY: "${SHOPIFY.publicKey}"
+      SHOPIFY_API_KEY: "${SHOPIFY.API_KEY}"
     };
   `);
 });
