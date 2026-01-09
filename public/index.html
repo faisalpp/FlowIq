@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopify Orders</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/config.js"></script>
+    <meta name="shopify-api-key" content="" />
+    <script>
+      document.querySelector(
+        'meta[name="shopify-api-key"]'
+      ).setAttribute('content', window.APP_CONFIG.SHOPIFY_API_KEY);
+    </script>
+    <script src="https://cdn.shopify.com/shopifycloud/app-bridge.js"></script>
+</head>
+<style>
+/* Reset some defaults */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Full page container */
+body, html {
+  height: 100%;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Card container */
+.container {
+  text-align: center;
+}
+
+.card {
+  background: white;
+  padding: 40px 60px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  max-width: 400px;
+  width: 90%;
+  animation: fadeIn 1s ease-out;
+}
+
+/* Heading */
+.card h1 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+/* Paragraph */
+.card p {
+  color: #555;
+  margin-bottom: 30px;
+  font-size: 1rem;
+}
+
+/* Button */
+.btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background: #2575fc;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: #1a5ed0;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+<body>
+ <div class="container">
+    <div class="card">
+      <h1>🎉 Welcome!</h1>
+      <p>Your app has been successfully installed.</p>
+      <a href="#" class="btn">Go to Dashboard</a>
+    </div>
+  </div>
+</body>
+</body>
+</html>
