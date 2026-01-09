@@ -2,7 +2,6 @@
 const {SHOPIFY,BASE_URL} = require('../config');
 const {upsertShopAuth} = require('../apis/auth/index');
 const DB = require('../db');
-const Fetch = require('node-fetch').default;
 
 async function RedirectToShopifyAuth(req, res) {
     // console.log('RedirectToShopifyAuth called with query:', req.query);
@@ -126,23 +125,31 @@ async function HandleCallback(req,res){
         }
 
         // Exchange code for access token
-       const response = await Fetch(`https://${shop}/admin/oauth/access_token`, {
+       const response = await fetch(`https://${shop}/admin/oauth/access_token`, {
          method: 'POST',
-         headers: {'Content-Type': 'application/json'},
+         headers: {
+           'Content-Type': 'application/json',
+         },
          body: JSON.stringify({
            client_id: apiKey,
            client_secret: apiSecret,
-           code: code
-         })
+           code: code,
+         }),
        });
-
-       // Before parsing JSON, check content type
+       
+       // Check HTTP status first
+       if (!response.ok) {
+         return res.redirect('/dashboard/unauthorized');
+       }
+       
+       // Check content type
        const contentType = response.headers.get('content-type');
        if (!contentType || !contentType.includes('application/json')) {
          return res.redirect('/dashboard/unauthorized');
        }
        
        const accessData = await response.json();
+       console.log('Access Data:', accessData);
        if(accessData.access_token){
           // Save access token
           await upsertShopAuth(shop,accessData.access_token)
