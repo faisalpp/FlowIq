@@ -2,7 +2,7 @@
 const {SHOPIFY,BASE_URL} = require('../config');
 const {upsertShopAuth} = require('../apis/auth/index');
 const DB = require('../db');
-const Fetch = require('node-fetch');
+const Fetch = require('node-fetch').default;
 
 async function RedirectToShopifyAuth(req, res) {
     // console.log('RedirectToShopifyAuth called with query:', req.query);
