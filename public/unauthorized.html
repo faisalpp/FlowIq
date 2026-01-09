@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Authentication Failed</title>
+  <link rel="stylesheet" href="auth-failed.css">
+</head>
+<style>
+/* Reset defaults */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Full page container */
+body, html {
+  height: 100%;
+  background: #ffe5e5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Centered card */
+.container {
+  text-align: center;
+}
+
+.card {
+  background: white;
+  padding: 40px 60px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  max-width: 400px;
+  width: 90%;
+  animation: shake 0.5s ease-in-out;
+}
+
+/* Heading */
+.card h1 {
+  color: #d32f2f;
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+/* Paragraph */
+.card p {
+  color: #555;
+  margin-bottom: 30px;
+  font-size: 1rem;
+}
+
+/* Button */
+.btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background: #d32f2f;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: #a02727;
+}
+
+/* Shake animation for error */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-10px); }
+  40% { transform: translateX(10px); }
+  60% { transform: translateX(-10px); }
+  80% { transform: translateX(10px); }
+  100% { transform: translateX(0); }
+}
+</style>
+<body>
+  <div class="container">
+    <div class="card">
+      <h1>❌ Authentication Failed</h1>
+      <p>We couldn’t verify your credentials. Please try again or contact support.</p>
+      <a href="/" class="btn">Go Back</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -2,6 +2,7 @@
 const {SHOPIFY,BASE_URL} = require('../config');
 const {upsertShopAuth} = require('../apis/auth/index');
 const DB = require('../db');
+const Fetch = require('node-fetch');
 
 async function RedirectToShopifyAuth(req, res) {
     // console.log('RedirectToShopifyAuth called with query:', req.query);
@@ -138,9 +139,7 @@ async function HandleCallback(req,res){
        // Before parsing JSON, check content type
        const contentType = response.headers.get('content-type');
        if (!contentType || !contentType.includes('application/json')) {
-         const text = await response.text();
-         console.error('Non-JSON response from Shopify:', text);
-         return res.status(400).send('Shopify OAuth failed');
+         return res.redirect('/dashboard/unauthorized');
        }
        
        const accessData = await response.json();
@@ -153,7 +152,7 @@ async function HandleCallback(req,res){
           return res.redirect('/dashboard?shop='+shop);
           
         }else{
-         return res.redirect('/unauthorized');
+         return res.redirect('/dashboard/unauthorized');
         }        
         
     }
