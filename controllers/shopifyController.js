@@ -59,8 +59,8 @@ async function RedirectToShopifyAuth(req, res) {
 
     const installUrl = `https://${shop}/admin/oauth/authorize?` + new URLSearchParams({
         client_id: SHOPIFY.API_KEY,
-        scope: SHOPIFY.SCOPES,
-        redirect_uri: SHOPIFY.CALLBACK_URL,
+        scope: SHOPIFY.SCOPES ?? '',
+        redirect_uri: SHOPIFY.SHOPIFY_CALLBACK_URL,
     }).toString();
 
     // return res.redirect(installUrl);
